@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ahmed's Ultimate Game Store</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:#1f1f2e;color:#fff;line-height:1.6;font-family:'Roboto',sans-serif;}
+a{text-decoration:none;color:inherit;}
+button{cursor:pointer;}
+
+/* Header */
+header{display:flex;justify-content:space-between;align-items:center;padding:20px 50px;background:#222;color:#0ff;position:sticky;top:0;z-index:100;box-shadow:0 2px 5px rgba(0,0,0,0.5);font-family:'Orbitron',sans-serif;}
+header h1{font-size:28px;}
+nav a{margin-left:20px;color:#fff;font-weight:600;transition:0.3s;}
+nav a:hover{color:#0ff;}
+
+/* Hero Section */
+.hero{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:90vh;
+background:linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url('https://images.unsplash.com/photo-1601933472555-c1ee882f5a1d?auto=format&fit=crop&w=1950&q=80') no-repeat center/cover;}
+.hero h2{font-size:3rem;color:#0ff;margin-bottom:20px;text-shadow:0 0 10px #0ff;font-family:'Orbitron',sans-serif;}
+.hero p{font-size:1.3rem;margin-bottom:30px;color:#ccc;max-width:700px;}
+.hero button{padding:15px 35px;background:#0ff;border:none;border-radius:8px;font-weight:700;color:#000;transition:0.3s;font-size:1rem;}
+.hero button:hover{background:#00c3c3;color:#fff;}
+
+/* Price Section */
+#price-section{padding:20px;text-align:center;background:#2c2c44;font-size:1.2rem;color:#ffd700;}
+
+/* Store Section */
+.store{padding:60px 5%;}
+.filters{display:flex;justify-content:center;margin-bottom:40px;flex-wrap:wrap;}
+.filters select{margin:5px 15px;padding:12px 18px;border-radius:6px;border:none;font-weight:600;font-size:1rem;}
+.games-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;}
+.game-card{background:#2b2b3e;border-radius:15px;overflow:hidden;transition:0.3s;border:1px solid #444;position:relative;}
+.game-card:hover{transform:translateY(-8px);border-color:#0ff;box-shadow:0 0 20px #0ff;}
+.game-card img{width:100%;height:280px;object-fit:cover;}
+.game-info{padding:18px;}
+.game-info h3{margin-bottom:12px;color:#0ff;font-size:1.4rem;font-family:'Orbitron',sans-serif;}
+.game-info p{font-size:1rem;color:#ccc;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.game-info button{padding:10px 20px;background:#0ff;border:none;border-radius:6px;font-weight:700;color:#000;transition:0.3s;font-size:1rem;}
+.game-info button:hover{background:#00c3c3;color:#fff;}
+
+/* About Section */
+.about{padding:60px 5%;text-align:center;background:#222;border-radius:10px;margin:20px 5%;}
+.about h2{color:#0ff;margin-bottom:25px;font-size:2.5rem;font-family:'Orbitron',sans-serif;}
+.about p{color:#ccc;max-width:800px;margin:0 auto 20px;font-size:1.1rem;}
+.about p span{color:#ffd700;}
+.about img{width:160px;border-radius:50%;border:3px solid #0ff;margin-bottom:20px;}
+
+/* Contact Section */
+.contact{padding:60px 5%;text-align:center;background:#2c2c44;border-radius:10px;margin:20px 5%;}
+.contact h2{color:#0ff;margin-bottom:20px;font-size:2.3rem;font-family:'Orbitron',sans-serif;}
+.contact p{color:#ccc;font-size:1.2rem;margin:10px 0;}
+.contact a{color:#ffd700;font-weight:600;}
+.contact a:hover{color:#0ff;}
+
+/* Footer */
+footer{text-align:center;padding:25px;background:#222;color:#ccc;font-size:0.9rem;}
+
+/* ------------------ Responsive Media Queries ------------------ */
+@media (max-width: 1024px) {
+  header { padding: 15px 30px; }
+  .hero h2 { font-size: 2.5rem; }
+  .hero p { font-size: 1.1rem; max-width: 500px; }
+  .filters select { padding: 10px 15px; font-size: 0.95rem; }
+  .game-card img { height: 240px; }
+}
+
+@media (max-width: 768px) {
+  header { flex-direction: column; gap: 10px; text-align: center; }
+  nav a { margin-left: 10px; display: inline-block; }
+  .hero h2 { font-size: 2rem; }
+  .hero p { font-size: 1rem; max-width: 90%; }
+  .game-card img { height: 200px; }
+  .game-info h3 { font-size: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .hero { height: 70vh; padding: 10px; }
+  .hero h2 { font-size: 1.7rem; }
+  .hero p { font-size: 0.95rem; }
+  .filters { flex-direction: column; align-items: center; }
+  .filters select { margin: 5px 0; width: 80%; }
+  .game-card img { height: 180px; }
+  .game-info h3 { font-size: 1.1rem; }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Ahmed's Games</h1>
+    <nav>
+        <a href="#store">Store</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>Ahmed's Ultimate Game Store</h2>
+    <p>PC, PlayStation & Xbox Games – Classic & Latest Hits. Explore our handpicked collection of latest and classic games, carefully selected for quality, entertainment, and variety.</p>
+    <button onclick="document.getElementById('store').scrollIntoView({behavior:'smooth'})">Shop Now</button>
+</section>
+
+<div id="price-section">All Games Price Range: <b>PKR 500 – 1000 (Negotiable)</b></div>
+
+<section class="store" id="store">
+    <div class="filters">
+        <select id="platformFilter">
+            <option value="all">All Platforms</option>
+            <option value="PC">PC</option>
+            <option value="PS">PlayStation</option>
+            <option value="Xbox">Xbox</option>
+        </select>
+        <select id="genreFilter">
+            <option value="all">All Genres</option>
+            <option value="Action">Action</option>
+            <option value="RPG">RPG</option>
+            <option value="FPS">FPS</option>
+            <option value="Sports">Sports</option>
+            <option value="Racing">Racing</option>
+            <option value="Adventure">Adventure</option>
+            <option value="Fighting">Fighting</option>
+        </select>
+    </div>
+    <div class="games-grid" id="gamesGrid"></div>
+</section>
+
+<section class="about" id="about">
+    <img src="https://via.placeholder.com/160" alt="Ahmed">
+    <h2>About Me</h2>
+    <p><span>I am passionate about gaming</span> and started this store to provide the best PC, PlayStation, and Xbox games. From classic favorites to the latest hits, I ensure every title offers high-quality entertainment. Prices are affordable and negotiable, ranging from <b>PKR 500 – 1000</b>. Explore the collection, and if you want other games, they are also available upon request!</p>
+</section>
+
+<section class="contact" id="contact">
+    <h2>Contact to Buy</h2>
+    <p><b>Phone:</b> <a href="tel:03160120799">03160120799</a>, <a href="tel:03269390915">03269390915</a></p>
+    <p><b>WhatsApp:</b> <a href="https://wa.me/03160120799" target="_blank">03160120799</a>, <a href="https://wa.me/03269390915" target="_blank">03269390915</a></p>
+    <p><b>Email:</b> <a href="mailto:mujtabahasnain215@gmail.com">mujtabahasnain215@gmail.com</a></p>
+    <p><b>Facebook:</b> <a href="https://www.facebook.com/share/17ZJroAxke/" target="_blank">facebook.com/Hasnain Mujtaba</a></p>
+</section>
+
+<footer>&copy; 2025 Ahmed's Games. All rights reserved.</footer>
+
+<script>
+const games = [
+    {name:'FIFA 23', platform:'PS', genre:'Sports', img:'images/fifa.jpg'},
+    {name:'Cyberpunk 2077', platform:'PC', genre:'RPG', img:'images/cyberpunk.jpg'},
+    {name:'Halo Infinite', platform:'Xbox', genre:'FPS', img:'images/halo_infinite.jpg'},
+    {name:'Forza Horizon', platform:'Xbox', genre:'Racing', img:'images/forza.jpg'},
+    {name:'Assassin’s Creed', platform:'PC', genre:'Action', img:'images/assasian_creed.jpg'},
+    {name:'God of War', platform:'PS', genre:'Action', img:'images/god_of_war.jpg'},
+    {name:'Elden Ring', platform:'PC', genre:'RPG', img:'images/elden_ring.jpg'},
+    {name:'Gears 5', platform:'Xbox', genre:'FPS', img:'images/gear5.jpg'},
+    {name:'Spider-Man: Miles Morales', platform:'PS', genre:'Action', img:'images/spider_man.jpg'},
+    {name:'The Witcher 3', platform:'PC', genre:'RPG', img:'images/the_witcher.jpg'},
+    {name:'Tekken 7', platform:'PS', genre:'Fighting', img:'images/tekken_7.jpg'},
+    {name:'Tekken 8', platform:'PS', genre:'Fighting', img:'images/tekken_8.jpg'},
+    {name:'GTA 4', platform:'PC', genre:'Action', img:'images/gta_4.jpg'},
+    {name:'GTA 5', platform:'PC', genre:'Action', img:'images/gta_5.jpg'},
+    {name:'Spider-Man 2', platform:'PS', genre:'Action', img:'images/spider_man_2.jpg'}
+];
+
+const platformIcons = { PC:'💻', PS:'🎮', Xbox:'🕹️' };
+const gamesGrid = document.getElementById('gamesGrid');
+const platformFilter = document.getElementById('platformFilter');
+const genreFilter = document.getElementById('genreFilter');
+
+function displayGames(){
+    const platform = platformFilter.value;
+    const genre = genreFilter.value;
+    gamesGrid.innerHTML='';
+    const filtered = games.filter(game => (platform==='all'||game.platform===platform)&&(genre==='all'||game.genre===genre));
+    filtered.forEach(game => {
+        const card=document.createElement('div');
+        card.className='game-card';
+        card.innerHTML=`<img src="${game.img}" alt="${game.name}"><div class="game-info"><h3>${game.name}</h3><p>Platform: ${platformIcons[game.platform]} ${game.platform}</p><p>Genre: ${game.genre}</p><button onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Buy Now</button></div>`;
+        gamesGrid.appendChild(card);
+    });
+}
+
+platformFilter.addEventListener('change',displayGames);
+genreFilter.addEventListener('change',displayGames);
+displayGames();
+</script>
+
+</body>
+</html>
